@@ -1,0 +1,79 @@
+using System;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+
+class ImageViewer
+{
+    [STAThread]
+    public static void Main(string[] args)
+    {
+        // Ask the user to select the folder containing the images
+        FolderBrowserDialog folderDialog = new FolderBrowserDialog();
+        folderDialog.SelectedPath = "A:\\Syncit 2";
+        DialogResult result = folderDialog.ShowDialog();
+        if (result == DialogResult.OK)
+        {
+            string folderPath = folderDialog.SelectedPath;
+            var files = Directory.GetFiles(folderPath, "*.jpg", SearchOption.TopDirectoryOnly);
+            Array.Sort(files);
+            int currentImage = 0;
+            while (currentImage < files.Length)
+            {
+                try
+                {
+                    Image image = Image.FromFile(files[currentImage]);
+                    Form form = new Form();
+                    form.Size = new Size(Screen.PrimaryScreen.Bounds.Width, image.Height);
+                    form.AutoScrollMinSize = new Size(0, image.Height);
+                    PictureBox pictureBox = new PictureBox();
+                    pictureBox.Dock = DockStyle.Fill;
+                    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                    pictureBox.Image = image;
+                    form.Controls.Add(pictureBox);
+                    form.AutoScroll = true;
+                    form.KeyPreview = true;
+                    form.KeyDown += Form_KeyDown;
+                    form.MouseWheel += Form_MouseWheel;
+                    form.ShowDialog();
+                }
+                catch (FileNotFoundException ex)
+                {
+                    Console.WriteLine("File not found: " + ex.FileName);
+                }
+                catch (OutOfMemoryException ex)
+                {
+                    Console.WriteLine("Error loading image: " + ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+                ConsoleKeyInfo key = Console.ReadKey();
+                if (key.Key == ConsoleKey.E)
+                {
+                    currentImage++;
+                }
+                else if (key.Key == ConsoleKey.Escape)
+                {
+                    break;
+                }
+            }
+        }
+    }
+
+    private static void Form_MouseWheel(object sender, MouseEventArgs e)
+    {
+        Form form = (Form)sender;
+        form.AutoScrollPosition = new Point(0, -e.Delta);
+    }
+
+    private static void Form_KeyDown(object sender, KeyEventArgs e)
+    {
+        Form form = (Form)sender;
+        if (e.KeyCode == Keys.Escape)
+        {
+            form.Close();
+        }
+    }
+}
