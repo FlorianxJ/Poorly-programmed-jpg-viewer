@@ -12,4 +12,4 @@ But be aware that any letter other than e would work in the same way because the
 To exit hit esc or skip trough all the images and if you are some kind of rebel just close the command promt.
 The result is gonna be the same.
 
-If you wanna improve it just do so i am gonna have all the code uploaded in the Jpg reader .txt file, if you plan to upload it to github please leave a link unter this Post.
+If you wanna improve it just do so i am gonna have all the code uploaded in the Jpg reader .txt file.
