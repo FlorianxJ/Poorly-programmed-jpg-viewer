@@ -1,4 +1,4 @@
-# Poorly-programmed-jpg-viewer
+# jpg-viewer/reader
 It´s my first time programming so it´s really bad but hey here i am posting my result.
 It is intended as a kind of E-Book reader and works based on a command promt.
 You first have to choose the folder with the jpg´s you want to view.
