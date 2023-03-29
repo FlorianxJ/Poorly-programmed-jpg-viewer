@@ -34,7 +34,7 @@ class ImageViewer
                     form.AutoScroll = true;
                     form.KeyPreview = true;
                     form.KeyDown += Form_KeyDown;
-                    form.MouseWheel += Form_MouseWheel;
+                    pictureBox.MouseWheel += PictureBox_MouseWheel;
                     form.ShowDialog();
                 }
                 catch (FileNotFoundException ex)
@@ -62,10 +62,14 @@ class ImageViewer
         }
     }
 
-    private static void Form_MouseWheel(object sender, MouseEventArgs e)
+    private static void PictureBox_MouseWheel(object sender, MouseEventArgs e)
     {
-        Form form = (Form)sender;
-        form.AutoScrollPosition = new Point(0, -e.Delta);
+        PictureBox pictureBox = (PictureBox)sender;
+        Form form = pictureBox.FindForm();
+        if (form != null)
+        {
+            form.AutoScrollPosition = new Point(0, form.AutoScrollPosition.Y - e.Delta);
+        }
     }
 
     private static void Form_KeyDown(object sender, KeyEventArgs e)
