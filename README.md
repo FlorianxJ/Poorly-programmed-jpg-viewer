@@ -13,3 +13,11 @@ To exit hit esc or skip trough all the images and if you are some kind of rebel 
 The result is gonna be the same.
 
 If you wanna improve it just do so i am gonna have all the code uploaded in the Jpg reader .txt file.
+
+A brief description provided by chatgpt3 would be:
+
+This code is a simple image viewer that prompts the user to select a folder of images and then displays each image in the folder one by one.
+The program uses the Windows Forms library to create a window that displays the selected image.
+The window can be scrolled to view the image and can be closed with the ESC key.
+Additionally, the user can press the "E" key to move to the next image.
+If there is a problem loading the image, an appropriate error message is displayed.
