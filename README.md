@@ -14,10 +14,6 @@ The result is gonna be the same.
 
 If you wanna improve it just do so i am gonna have all the code uploaded in the Jpg reader .txt file.
 
-A brief description provided by chatgpt3 would be:
+A brief description provided by chatgpt would be:
 
-This code is a simple image viewer that prompts the user to select a folder of images and then displays each image in the folder one by one.
-The program uses the Windows Forms library to create a window that displays the selected image.
-The window can be scrolled to view the image and can be closed with the ESC key.
-Additionally, the user can press the "E" key to move to the next image.
-If there is a problem loading the image, an appropriate error message is displayed.
+This is a C# program that creates an image viewer. The viewer allows the user to select a folder and then displays all the .jpg images in that folder one by one. The user can navigate through the images using the ‘E’ key and can exit the viewer by pressing the ‘Escape’ key. The viewer also supports scrolling through the image using the mouse wheel. If there’s an error while loading an image, the program will catch the exception and print an error message to the console. It’s a neat piece of code! Do you need help with anything specific in this code?
