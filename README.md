@@ -13,7 +13,3 @@ To exit hit esc or skip trough all the images and if you are some kind of rebel 
 The result is gonna be the same.
 
 If you wanna improve it just do so i am gonna have all the code uploaded in the Jpg reader .txt file.
-
-A brief description provided by chatgpt would be:
-
-This is a C# program that creates an image viewer. The viewer allows the user to select a folder and then displays all the .jpg images in that folder one by one. The user can navigate through the images using the ‘E’ key and can exit the viewer by pressing the ‘Escape’ key. The viewer also supports scrolling through the image using the mouse wheel. If there’s an error while loading an image, the program will catch the exception and print an error message to the console. It’s a neat piece of code!
