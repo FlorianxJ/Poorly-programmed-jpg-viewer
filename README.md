@@ -13,3 +13,5 @@ To exit hit esc or skip trough all the images and if you are some kind of rebel 
 The result is gonna be the same.
 
 If you wanna improve it just do so i am gonna have all the code uploaded in the Jpg reader .txt file.
+
+For the Java version applies the same prinziple, but it can by default also acces 
