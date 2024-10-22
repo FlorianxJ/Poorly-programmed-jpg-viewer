@@ -14,4 +14,4 @@ The result is gonna be the same.
 
 If you wanna improve it just do so i am gonna have all the code uploaded in the Jpg reader .txt file.
 
-For the Java version applies the same prinziple, but it can by default also acces 
+For the Java version applies the same prinziple, but it can by default also acces .png files.
