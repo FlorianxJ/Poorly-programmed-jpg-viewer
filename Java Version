@@ -1,0 +1,74 @@
+package jpgviewer;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.File;
+
+public class ImageViewer {
+    private static int currentImage = 0;
+    private static File[] files;
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            int result = fileChooser.showOpenDialog(null);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File folder = fileChooser.getSelectedFile();
+                files = folder.listFiles((dir, name) -> name.toLowerCase().endsWith(".png") || name.toLowerCase().endsWith(".jpg"));
+                if (files != null) {
+                    java.util.Arrays.sort(files);
+                    showImage();
+                }
+            }
+        });
+    }
+
+    private static void showImage() {
+        if (currentImage < files.length) {
+            try {
+                ImageIcon imageIcon = new ImageIcon(files[currentImage].getAbsolutePath());
+                JFrame frame = new JFrame();
+                frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.setLayout(new BorderLayout());
+
+                JLabel label = new JLabel(imageIcon);
+                label.setHorizontalAlignment(JLabel.CENTER);
+                JScrollPane scrollPane = new JScrollPane(label);
+                frame.add(scrollPane, BorderLayout.CENTER);
+
+
+                frame.addKeyListener(new KeyAdapter() {
+                    public void keyPressed(KeyEvent e) {
+                        if (e.getKeyCode() == KeyEvent.VK_E) {  //Display Next Image
+                            currentImage++;
+                            frame.dispose();
+                            showImage();
+                        } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {  //End Image Display
+                            frame.dispose();
+                        } else if (e.getKeyCode() == KeyEvent.VK_Q) {   //Display last Image
+                            currentImage--;
+                            frame.dispose();
+                            showImage();
+                        } else if (e.getKeyCode() == KeyEvent.VK_R) {   //Reloding Image Display
+                            frame.dispose();
+                            showImage();
+                        }
+                    }
+                });
+
+                scrollPane.addMouseWheelListener(m -> {
+                    JScrollBar verticalScrollBar = scrollPane.getVerticalScrollBar();
+                    verticalScrollBar.setValue(verticalScrollBar.getValue() + m.getWheelRotation() * 20);
+                });
+
+                frame.setVisible(true);
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+    }
+}
