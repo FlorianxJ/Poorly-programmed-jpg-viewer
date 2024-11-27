@@ -1,3 +1,10 @@
+Attention!
+As there is a new EU Rule, that makes me liable for any damages that happend because of my Application (Executable files),
+i will only provide the code online as Source code. To use it you have to compile it yourself sadly.
+
+
+
+
 # jpg-viewer/reader
 It´s my first time programming so it´s really bad but hey here i am posting my result.
 It is intended as a kind of E-Book reader and works based on a command promt.
